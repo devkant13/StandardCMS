@@ -1,0 +1,26 @@
+﻿@model StandardCMS.DB.Models.Content
+
+<form asp-action="CreateContent">
+    <div class="form-group">
+        <label asp-for="SubMenuId" class="control-label"></label>
+        <select asp-for="SubMenuId" class="form-control" asp-items="ViewBag.SubMenuId"></select>
+        <span asp-validation-for="SubMenuId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="HtmlContent" class="control-label"></label>
+        <textarea asp-for="HtmlContent" class="form-control" id="htmlEditor"></textarea>
+        <span asp-validation-for="HtmlContent" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create Content" class="btn btn-primary" />
+    </div>
+</form>
+
+@section Scripts {
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#htmlEditor'
+        });
+    </script>
+}
