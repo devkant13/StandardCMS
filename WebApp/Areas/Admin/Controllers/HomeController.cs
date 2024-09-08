@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Areas.Admin.Controllers
 {
-    [Area("admin")]
+    [Area("Admin")]
     public class HomeController : Controller
     {
         // GET: HomeController

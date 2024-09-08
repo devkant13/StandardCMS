@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApp.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;
