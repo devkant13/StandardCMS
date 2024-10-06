@@ -1,5 +1,7 @@
 ﻿@model StandardCMS.DB.Models.Menu
-
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
 <form asp-action="CreateMenu">
     <div class="form-group">
         <label asp-for="Name" class="control-label"></label>
