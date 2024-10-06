@@ -7,54 +7,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Admin Area"] - CMS</title>
     <link rel="stylesheet" href="" />
- 
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />    
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />  
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     @RenderSection("Styles", required: false)
 </head>
 <body>
     <header>
         @* <ul>
-            @foreach (var menu in Model)
-            {
-                <li>
-                    @menu.Name
-                    @if (menu.SubMenus != null && menu.SubMenus.Any())
-                    {
-                        <ul>
-                            @foreach (var subMenu in menu.SubMenus)
-                            {
-                                <li>
-                                    <a href="#" onclick="loadContent(@subMenu.Id)">@subMenu.Name</a>
-                                </li>
-                                <li>@subMenu.Name</li>
-                            }
-                        </ul>
-                    }
-                </li>
-            }
+        @foreach (var menu in Model)
+        {
+        <li>
+        @menu.Name
+        @if (menu.SubMenus != null && menu.SubMenus.Any())
+        {
+        <ul>
+        @foreach (var subMenu in menu.SubMenus)
+        {
+        <li>
+        <a href="#" onclick="loadContent(@subMenu.Id)">@subMenu.Name</a>
+        </li>
+        <li>@subMenu.Name</li>
+        }
+        </ul>
+        }
+        </li>
+        }
         </ul> *@
 
 
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApp</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApp</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-        <ul class="navbar-nav flex-grow-1">
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-        </li>
-        <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </li>
-        </ul>
-        </div>
-        </div>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Menus" asp-action="Index">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="SubMenus" asp-action="Index">Sub Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Contents" asp-action="Index">Contents</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Agents" asp-action="Index">Agents</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Commission" asp-action="Index">Commission Rule</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Plots" asp-action="Index">Plots</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Sales" asp-action="Index">Sales</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
         </nav>
     </header>
     <div class="container">
@@ -81,15 +97,15 @@
 
 
     @* <script type="text/javascript">
-        function loadContent(subMenuId) {
-            console.log("LoadContent called with id: " + subMenuId);
-            $.get('@Url.Action("LoadContent", "Home")', { subMenuId: subMenuId }, function (data) {
-                console.log("AJAX request succeeded.");
-                $('#contentArea').html(data);
-            }).fail(function () {
-                console.log("AJAX request failed.");
-            });
-        }
+    function loadContent(subMenuId) {
+    console.log("LoadContent called with id: " + subMenuId);
+    $.get('@Url.Action("LoadContent", "Home")', { subMenuId: subMenuId }, function (data) {
+    console.log("AJAX request succeeded.");
+    $('#contentArea').html(data);
+    }).fail(function () {
+    console.log("AJAX request failed.");
+    });
+    }
     </script> *@
 
     @RenderSection("Scripts", required: false)
