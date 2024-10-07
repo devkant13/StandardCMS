@@ -1,0 +1,13 @@
+﻿Project: NFC
+
+
+
+Agent screens (When Agent Logged-In):
+		1.Create Lead : can give details about Plot no, Customer Name, Plot Price, Inquiry date, Status.	
+        2.Sale & Commission Self: in each month 	    
+      	3.Commission by Referral: Parent can see referral way by which Child it Got.
+	    4.Agent profile page
+        NOTE: only 2 parent will receive 1,1 % each for any sale.
+
+
+Admin screens:  

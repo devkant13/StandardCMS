@@ -1,11 +1,19 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using StandardCMS.DB;
 
 namespace WebApp.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class HomeController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         // GET: HomeController
         public ActionResult Index()
         {
@@ -80,9 +88,13 @@ namespace WebApp.Areas.Admin.Controllers
                 return View();
             }
         }
-        public ActionResult AdminDashboard()
+        public  IActionResult AdminDashboard()
         {
-            return View();
+            var applicationDbContext = _context.Sales;
+            //if (applicationDbContext != null && (applicationDbContext.Any()))
+                return View( applicationDbContext.ToList());
+            //else
+                //return NotFound();
         }
 
     }

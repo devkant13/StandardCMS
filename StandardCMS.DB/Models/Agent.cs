@@ -15,5 +15,6 @@ namespace StandardCMS.DB.Models
         public virtual ICollection<Agent> ChildAgents { get; set; }   // For child agents
         // Navigation property for related Commissions
         public ICollection<Commission> Commissions { get; set; } = new List<Commission>();
+        public bool IsAgentActive { get; set; }
     }
 }

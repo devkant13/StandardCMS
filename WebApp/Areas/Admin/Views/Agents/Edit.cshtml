@@ -24,6 +24,11 @@
                 <span asp-validation-for="ParentAgentId" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="IsAgentActive" class="control-label"></label>
+                <input type="checkbox" asp-for="IsAgentActive" class="form-control" />
+                <span asp-validation-for="IsAgentActive" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
