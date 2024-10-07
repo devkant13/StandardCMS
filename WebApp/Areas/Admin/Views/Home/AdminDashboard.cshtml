@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<h2>Sales and Commissions</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Sale ID</th>
+            <th>Agent</th>
+            <th>Sale Amount</th>
+            <th>Commissions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var sale in Model.Sales)
+        {
+            <tr>
+                <td>@sale.SaleId</td>
+                <td>@sale.Agent.Name</td>
+                <td>@sale.SaleAmount</td>
+                <td>
+                    @foreach (var commission in sale.Commissions)
+                    {
+                        <p>@commission.Agent.Name: @commission.CommissionAmount</p>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

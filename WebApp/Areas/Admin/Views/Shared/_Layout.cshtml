@@ -1,5 +1,5 @@
-﻿@using StandardCMS.DB.Models;
-@model IEnumerable<Menu>;
+﻿@* @using StandardCMS.DB.Models;
+@model IEnumerable<Menu>; *@
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +47,9 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Home" asp-action="AdminDashboard">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Admin" asp-controller="Menus" asp-action="Index">Menu</a>
                         </li>
                         <li class="nav-item">
@@ -59,14 +62,15 @@
                             <a class="nav-link text-dark" asp-area="Admin" asp-controller="Agents" asp-action="Index">Agents</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Commission" asp-action="Index">Commission Rule</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Plots" asp-action="Index">Plots</a>
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="CommissionRules" asp-action="Index">Commission Rule</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="Admin" asp-controller="Sales" asp-action="Index">Sales</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Plots" asp-action="Index">Plots</a>
+                        </li>
+                        
 
                     </ul>
                 </div>

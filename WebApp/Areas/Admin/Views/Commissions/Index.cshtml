@@ -1,0 +1,32 @@
+﻿@model IEnumerable<StandardCMS.DB.Models.Commission>
+
+<h2>Commissions</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Commission ID</th>
+            <th>Agent Name</th>
+            <th>Sale Amount</th>
+            <th>Commission Amount</th>
+            <th>Date Issued</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var commission in Model)
+        {
+            <tr>
+                <td>@commission.CommissionId</td>
+                <td>@commission.Agent.Name</td>
+                <td>@commission.Sale.SaleAmount</td>
+                <td>@commission.CommissionAmount</td>
+                <td>@commission.DateIssued</td>
+                <td>
+                    <button class="btn btn-success">Approve</button>
+                    <button class="btn btn-danger">Deny</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

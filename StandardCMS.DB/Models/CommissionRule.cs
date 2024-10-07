@@ -13,5 +13,7 @@ namespace StandardCMS.DB.Models
         public int AgentLevel { get; set; }  // L1, L2, etc.
         [Column(TypeName = "decimal(18, 4)")]
         public decimal CommissionPercentage { get; set; }
+        [Column(TypeName = "decimal(18, 4)")]
+        public decimal SaleAmount { get; set; } //added newly as comission Varies on SaleAmount
     }
 }

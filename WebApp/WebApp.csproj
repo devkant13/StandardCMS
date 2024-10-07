@@ -388,6 +388,10 @@
 
   <ItemGroup>
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Agent\Controllers\" />
+    <Folder Include="Areas\Agent\Data\" />
+    <Folder Include="Areas\Agent\Models\" />
+    <Folder Include="Areas\Agent\Views\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,11 @@
+﻿@model StandardCMS.DB.Models.Sale
+
+<form asp-action="CreateSale">
+    <label for="AgentId">Agent</label>
+    <select asp-for="AgentId" asp-items="ViewBag.Agents"></select>
+
+    <label for="SaleAmount">Sale Amount</label>
+    <input type="number" asp-for="SaleAmount" />
+
+    <button type="submit">Add Sale</button>
+</form>

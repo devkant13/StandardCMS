@@ -80,5 +80,10 @@ namespace WebApp.Areas.Admin.Controllers
                 return View();
             }
         }
+        public ActionResult AdminDashboard()
+        {
+            return View();
+        }
+
     }
 }

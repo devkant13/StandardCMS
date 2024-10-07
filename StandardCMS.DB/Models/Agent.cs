@@ -11,8 +11,8 @@ namespace StandardCMS.DB.Models
         public int AgentId { get; set; }
         public string Name { get; set; }
         public int? ParentAgentId { get; set; }  // Nullable for the root agent
-        public virtual Agent ParentAgent { get; set; }  // Self-referencing relationship
-        public virtual ICollection<Agent> ChildAgents { get; set; }
+        public virtual Agent ParentAgent { get; set; }  // Self-referencing relationship // Reference to parent agent
+        public virtual ICollection<Agent> ChildAgents { get; set; }   // For child agents
         // Navigation property for related Commissions
         public ICollection<Commission> Commissions { get; set; } = new List<Commission>();
     }
