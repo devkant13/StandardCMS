@@ -4,6 +4,7 @@ using StandardCMS.DB;
 
 namespace WebApp.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CommissionsController : Controller
     {
         private readonly ApplicationDbContext _context;

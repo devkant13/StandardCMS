@@ -1,0 +1,71 @@
+﻿@model StandardCMS.DB.Models.Lead
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Lead</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="LeadId" />
+            <div class="form-group">
+                <label asp-for="CustomerName" class="control-label"></label>
+                <input asp-for="CustomerName" class="form-control" />
+                <span asp-validation-for="CustomerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CustomerPhone" class="control-label"></label>
+                <input asp-for="CustomerPhone" class="form-control" />
+                <span asp-validation-for="CustomerPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlotNo" class="control-label"></label>
+                <input asp-for="PlotNo" class="form-control" />
+                <span asp-validation-for="PlotNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeadPrice" class="control-label"></label>
+                <input asp-for="LeadPrice" class="form-control" />
+                <span asp-validation-for="LeadPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeadDate" class="control-label"></label>
+                <input asp-for="LeadDate" class="form-control" />
+                <span asp-validation-for="LeadDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusId" class="control-label"></label>
+                <select asp-for="StatusId" class="form-control" asp-items="ViewBag.StatusId"></select>
+                <span asp-validation-for="StatusId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LeadUpdates" class="control-label"></label>
+                <input asp-for="LeadUpdates" class="form-control" />
+                <span asp-validation-for="LeadUpdates" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

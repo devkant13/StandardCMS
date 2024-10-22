@@ -60,6 +60,9 @@ namespace StandardCMS.DB.Migrations
                     b.Property<decimal>("CommissionAmount")
                         .HasColumnType("decimal(18, 4)");
 
+                    b.Property<string>("CommissionType")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DateIssued")
                         .HasColumnType("datetime2");
 
@@ -116,6 +119,71 @@ namespace StandardCMS.DB.Migrations
                     b.HasIndex("SubMenuId");
 
                     b.ToTable("Contents");
+                });
+
+            modelBuilder.Entity("StandardCMS.DB.Models.Lead", b =>
+                {
+                    b.Property<int>("LeadId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LeadId"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CustomerPhone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LeadDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("LeadPrice")
+                        .HasColumnType("decimal(18, 4)");
+
+                    b.Property<string>("LeadUpdates")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PlotNo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StatusId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LeadId");
+
+                    b.HasIndex("StatusId");
+
+                    b.ToTable("Leads");
+                });
+
+            modelBuilder.Entity("StandardCMS.DB.Models.LeadStatus", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("LeadStatuses");
                 });
 
             modelBuilder.Entity("StandardCMS.DB.Models.Menu", b =>
@@ -218,6 +286,17 @@ namespace StandardCMS.DB.Migrations
                     b.Navigation("SubMenu");
                 });
 
+            modelBuilder.Entity("StandardCMS.DB.Models.Lead", b =>
+                {
+                    b.HasOne("StandardCMS.DB.Models.LeadStatus", "LeadStatus")
+                        .WithMany("Leads")
+                        .HasForeignKey("StatusId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("LeadStatus");
+                });
+
             modelBuilder.Entity("StandardCMS.DB.Models.Sale", b =>
                 {
                     b.HasOne("StandardCMS.DB.Models.Agent", "Agent")
@@ -245,6 +324,11 @@ namespace StandardCMS.DB.Migrations
                     b.Navigation("ChildAgents");
 
                     b.Navigation("Commissions");
+                });
+
+            modelBuilder.Entity("StandardCMS.DB.Models.LeadStatus", b =>
+                {
+                    b.Navigation("Leads");
                 });
 
             modelBuilder.Entity("StandardCMS.DB.Models.Menu", b =>

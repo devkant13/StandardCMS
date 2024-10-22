@@ -14,6 +14,7 @@ namespace StandardCMS.DB.Models
         public int AgentId { get; set; }
         [Column(TypeName = "decimal(18, 4)")]
         public decimal CommissionAmount { get; set; }
+        public string CommissionType { get; set; }
         public DateTime DateIssued { get; set; }
 
         public Sale Sale { get; set; }

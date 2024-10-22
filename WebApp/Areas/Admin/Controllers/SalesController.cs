@@ -14,10 +14,12 @@ namespace WebApp.Areas.Admin.Controllers
     public class SalesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly ICommissionService _commissionService;
 
-        public SalesController(ApplicationDbContext context)
+        public SalesController(ApplicationDbContext context,ICommissionService commissionService)
         {
             _context = context;
+            _commissionService = commissionService;
         }
 
         // GET: Admin/Sales
@@ -64,7 +66,9 @@ namespace WebApp.Areas.Admin.Controllers
             {
                 _context.Add(sale);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                await _commissionService.ApplyCommission(sale);
+                return RedirectToAction("Index", "Commissions"); //or  return RedirectToAction(nameof(Index)); // Redirect after creating
             }
             ViewData["AgentId"] = new SelectList(_context.Agents, "AgentId", "AgentId", sale.AgentId);
             return View(sale);
@@ -171,8 +175,9 @@ namespace WebApp.Areas.Admin.Controllers
                 _context.SaveChanges();
 
                 // Calculate and distribute commission
-                CalculateCommission(sale);
-                return RedirectToAction("Index"); //or  return RedirectToAction(nameof(Index)); // Redirect after creating
+                //CalculateCommission(sale); //previous of Calculation
+                _commissionService.ApplyCommission(sale);
+                return RedirectToAction("Index", "Commissions"); //or  return RedirectToAction(nameof(Index)); // Redirect after creating
             }
             return View(sale);
         }

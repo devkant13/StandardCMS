@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using StandardCMS.DB;
 using System.Configuration;
+using WebApp.Areas.Admin;
 
 namespace WebApp
 {
@@ -15,6 +16,9 @@ namespace WebApp
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            builder.Services.AddTransient<ApplicationDbContext, ApplicationDbContext>();
+            builder.Services.AddScoped<ICommissionService, CommissionService>();
             //services.AddControllersWithViews();
 
             var app = builder.Build();

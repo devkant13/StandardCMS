@@ -90,9 +90,11 @@ namespace WebApp.Areas.Admin.Controllers
         }
         public  IActionResult AdminDashboard()
         {
-            var applicationDbContext = _context.Sales;
+            var commissions = _context.Commissions.Include(c => c.Agent).Include(c => c.Sale).ToList();
+            return View(commissions);
+            //var applicationDbContext = _context.Commissions;
             //if (applicationDbContext != null && (applicationDbContext.Any()))
-                return View( applicationDbContext.ToList());
+            //return View( applicationDbContext.ToList());
             //else
                 //return NotFound();
         }

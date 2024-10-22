@@ -13,6 +13,8 @@ namespace StandardCMS.DB
         public DbSet<Sale> Sales { get; set; }
         public DbSet<Commission> Commissions { get; set; }
         public DbSet<CommissionRule> CommissionRules { get; set; }
+        public DbSet<Lead> Leads { get; set; }
+        public DbSet<LeadStatus> LeadStatuses { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -44,7 +46,14 @@ namespace StandardCMS.DB
                 .HasForeignKey(c => c.AgentId)
                 .OnDelete(DeleteBehavior.Restrict);  // Prevent cascading delete
 
-            base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);            
+
+            // Defining the one-to-many relationship between Lead and LeadStatus
+            modelBuilder.Entity<Lead>()
+                .HasOne(l => l.LeadStatus)      // Lead has one LeadStatus
+                .WithMany(s => s.Leads)         // LeadStatus has many Leads
+                .HasForeignKey(l => l.StatusId) // Foreign key in Lead table
+                .OnDelete(DeleteBehavior.Restrict); // Optional: to restrict delete actions
         }
 
 
