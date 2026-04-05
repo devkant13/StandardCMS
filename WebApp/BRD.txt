@@ -10,4 +10,10 @@ Agent screens (When Agent Logged-In):
         NOTE: only 2 parent will receive 1,1 % each for any sale.
 
 
-Admin screens:  
+Admin screens: 
+
+
+
+Developed Screens/menu:
+http://localhost:5096/Admin/admin/createMenu
+http://localhost:5096/Admin/Admin/CreateSubMenu
